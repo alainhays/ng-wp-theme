@@ -1,0 +1,15 @@
+/*
+Theme Name: wp-ng-theme
+Author: dudnikgg
+Author URI: http://github.com/dudnikgg
+Description: Starter!
+Version: 0.0.1
+*/
+
+$bootstrap-sass-asset-helper: true;
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "_variables";
+
+@import "modules/_logo";
+@import "modules/_main-menu";
