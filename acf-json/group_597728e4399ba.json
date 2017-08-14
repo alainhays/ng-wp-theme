@@ -64,6 +64,11 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
+            },
+            {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "templates\/registration.php"
             }
         ]
     ],
@@ -82,12 +87,11 @@
         "slug",
         "author",
         "format",
-        "page_attributes",
         "featured_image",
         "tags",
         "send-trackbacks"
     ],
     "active": 1,
     "description": "",
-    "modified": 1500983058
+    "modified": 1501163112
 }

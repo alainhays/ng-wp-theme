@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './dev/scripts/app.es6',
+  entry: './dev/scripts/app/index.js',
   output: {
     path: path.join(__dirname, './', ''),
     filename: 'app.js'
@@ -63,7 +63,7 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.js', '.json', '.scss']
+    extensions: ['.js', '.json', '.scss', '.es6']
   },
   devtool: 'eval-source-map'
 };

@@ -1,5 +1,5 @@
 <!DOCTYPE>
-<html <?php language_attributes(); ?> ng-app="app">
+<html <?php language_attributes(); ?>>
 
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -27,11 +27,11 @@
       <div class="row">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#primary-navbar" aria-expanded="false">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                  </button>
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
           <a class="logo" href="/"><img class="logo-image" src="<?php wpngtheme::type_of_image( 'logo' ) ?>" alt="logo"></a>
         </div>
 

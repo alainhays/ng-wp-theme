@@ -1,0 +1,11 @@
+@import './common/nav/nav.scss';
+
+
+
+#application {
+  @include container-fixed();
+  @extend .container;
+
+  display: flex;
+  flex-wrap: wrap;
+}

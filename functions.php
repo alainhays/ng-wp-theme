@@ -291,3 +291,73 @@ class wpngtheme extends wpngtheme_security {
 include_once( __DIR__ . "/lib/wp_bootstrap_navwalker.php" );
 
 wpngtheme::startup();
+
+/* For front-end form registration and login */
+class User {
+  static function logoutFn() {
+    wp_logout();
+
+    if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+      die();
+    } else {
+      header("Location: " . $_SERVER['HTTP_REFERER']);
+    }
+  }
+
+  static function logout() {
+    add_action("wp_ajax_logoutFn", "logoutFn");
+    add_action("wp_ajax_nopriv_logoutFn", "logoutFn");
+  }
+
+  static function loginFn() {
+    $creds = array();
+
+    $username = null;
+    $password = null;
+
+    if($_SERVER['REQUEST_METHOD'] == "POST") {
+      $username = $_POST["username"];
+      $password = $_POST["password"];
+    } else {
+      $username = $_GET["username"];
+      $password = $_GET["password"];
+    }
+
+    $creds['user_login'] = $username;
+    $creds['user_password'] = $password;
+    $creds['remember'] = true;
+    $user = wp_signon( $creds, false );
+    if (is_wp_error($user)) {
+      echo "FALSE";
+    } else {
+      echo "TRUE";
+    }
+
+    if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+      die();
+    } else {
+      header("Location: " . $_SERVER['HTTP_REFERER']);
+    }
+  }
+
+  static function login() {
+    add_action("wp_ajax_login", "login");
+    add_action("wp_ajax_nopriv_login", "login");
+  }
+
+
+}
+
+
+
+  /* TODO: PHP REGISTRATION WITH ACF FIELD */ // function pre_save_player( $post_id ) { // //prepare basic user info // $field_group
+  // = acf_get_fields_by_id('14'); // $username = $_POST['acf']['field_5979cc8a77f89']; // $email = $_POST['acf']['field_597af637643c9'];
+  // $password = $_POST['acf']['field_597af642643ca']; // //register user // $user_id = wp_create_user( $username, $password,
+  // $email ); // // update other user meta, prevent creation of post data // foreach ( $field_group as $key => $value ) { //
+  // update_user_meta( $user_id, $value['name'], $_POST['acf'][$value['key']] ); // unset( $_POST['acf'][$value['key']] ); //
+  // } // wp_set_current_user($user_id); // wp_set_auth_cookie($user_id); // wp_redirect( home_url() ); // exit; // return 'user_'.
+  // $user_id; // } // add_action('acf/validate_value/key=field_597af637643c9', 'validate_email', 10, 4); // add_action('acf/validate_value/key=field_5979cc8a77f89',
+  // 'validate_username2', 10, 4); // add_filter('acf/pre_save_post' , 'pre_save_player' ); // function validate_email($valid,
+  // $value, $field, $input) { // if (email_exists($value)) { // $valid = 'This E-mail adress already exists'; // } // return
+  // $valid; // } // function validate_username2($valid, $value, $field, $input) { // $username = get_field($field['key']);
+  // // if ($value == $username) { // $valid = 'This Username already exists'; // } // return $valid; // }

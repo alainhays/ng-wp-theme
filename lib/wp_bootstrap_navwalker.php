@@ -51,7 +51,19 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
 			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
-			$output .= $indent . '<li' . $id . $value . $class_names .'>';
+			$output .= $indent . '<li' . $id . $value . $class_names. '>';
+
+      /* Hide menu items when signed */
+      // if (apply_filters('the_title', $item->title, $item->ID) === 'Registration' ||
+      //     apply_filters('the_title', $item->title, $item->ID) === 'Login'    ) {
+      //     if ( is_user_logged_in() ) {
+      //         $output .= 'style="display: none" >';
+      //     } else {
+      //         $output .= '>';
+      //     }
+      // } else {
+      //     $output .= '>';
+      // }
 			$atts = array();
 			$atts['title']  = ! empty( $item->title )	? $item->title	: '';
 			$atts['target'] = ! empty( $item->target )	? $item->target	: '';

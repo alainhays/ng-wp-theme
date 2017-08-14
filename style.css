@@ -1505,24 +1505,24 @@ pre {
   max-height: 340px;
   overflow-y: scroll; }
 
-.container {
+.container, #application {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container:before, .container:after {
+  .container:before, #application:before, .container:after, #application:after {
     content: " ";
     display: table; }
-  .container:after {
+  .container:after, #application:after {
     clear: both; }
   @media (min-width: 768px) {
-    .container {
+    .container, #application {
       width: 750px; } }
   @media (min-width: 992px) {
-    .container {
+    .container, #application {
       width: 970px; } }
   @media (min-width: 1200px) {
-    .container {
+    .container, #application {
       width: 1170px; } }
 
 .container-fluid {
@@ -3723,15 +3723,15 @@ tbody.collapse.in {
     .navbar-fixed-bottom .navbar-collapse {
       max-height: 200px; } }
 
-.container > .navbar-header,
-.container > .navbar-collapse,
+.container > .navbar-header, #application > .navbar-header,
+.container > .navbar-collapse, #application > .navbar-collapse,
 .container-fluid > .navbar-header,
 .container-fluid > .navbar-collapse {
   margin-right: -15px;
   margin-left: -15px; }
   @media (min-width: 768px) {
-    .container > .navbar-header,
-    .container > .navbar-collapse,
+    .container > .navbar-header, #application > .navbar-header,
+    .container > .navbar-collapse, #application > .navbar-collapse,
     .container-fluid > .navbar-header,
     .container-fluid > .navbar-collapse {
       margin-right: 0;
@@ -3775,7 +3775,7 @@ tbody.collapse.in {
   .navbar-brand > img {
     display: block; }
   @media (min-width: 768px) {
-    .navbar > .container .navbar-brand,
+    .navbar > .container .navbar-brand, .navbar > #application .navbar-brand,
     .navbar > .container-fluid .navbar-brand {
       margin-left: -15px; } }
 
@@ -4302,18 +4302,18 @@ a.badge:hover, a.badge:focus {
     font-weight: 200; }
   .jumbotron > hr {
     border-top-color: #d5d5d5; }
-  .container .jumbotron,
+  .container .jumbotron, #application .jumbotron,
   .container-fluid .jumbotron {
     border-radius: 6px;
     padding-left: 15px;
     padding-right: 15px; }
-  .jumbotron .container {
+  .jumbotron .container, .jumbotron #application {
     max-width: 100%; }
   @media screen and (min-width: 768px) {
     .jumbotron {
       padding-top: 48px;
       padding-bottom: 48px; }
-      .container .jumbotron,
+      .container .jumbotron, #application .jumbotron,
       .container-fluid .jumbotron {
         padding-left: 60px;
         padding-right: 60px; }
@@ -5828,3 +5828,23 @@ button.close {
 
 .header {
   padding: 10px 0; }
+
+/* Angular APP components styles */
+.appMenu {
+  display: flex;
+  justify-content: space-around;
+  flex: 1 0 100%;
+  margin: 20px 0 40px 0; }
+
+#application {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-wrap: wrap; }
+  #application:before, #application:after {
+    content: " ";
+    display: table; }
+  #application:after {
+    clear: both; }

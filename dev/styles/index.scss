@@ -13,3 +13,7 @@ $bootstrap-sass-asset-helper: true;
 
 @import "modules/_logo";
 @import "modules/_main-menu";
+
+
+/* Angular APP components styles */
+@import "../scripts/app/app.scss";
