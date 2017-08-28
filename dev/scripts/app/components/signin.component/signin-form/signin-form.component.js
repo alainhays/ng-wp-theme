@@ -4,11 +4,18 @@ const SignInForm = {
   bindings: {},
   controller,
   template: `
-    <form id="login_form" method="post">
-      <input type="text" name="username" id="username" placeholder="Username" />
-      <input type="password" name="password" id="password" placeholder="Password" />
-      <input type="email" name="email" placeholder="E-mail" />
-      <input type="submit" id="login_submit" />
+    <form class="loginForm" name="$ctrl.loginForm" ng-submit="$ctrl.onSubmit().$valid" novalidate>
+      <div class="loginForm__group" ng-class="{ 'has-error' : $ctrl.loginForm.username.$invalid && $ctrl.loginForm.username.$touched }">
+        <input type="text" name="username" ng-model="$ctrl.username" placeholder="Username" required />
+      </div>
+
+      <div class="loginForm__group" ng-class="{ 'has-error' : $ctrl.loginForm.password.$invalid && $ctrl.loginForm.password.$touched }">
+        <input type="password" name="password" ng-model="$ctrl.password" placeholder="Password" required/>
+      </div>
+
+      <div class="formError" ng-show="$ctrl.loginError"> {{ $ctrl.loginErrorMessage }} </div>
+
+      <input type="submit" value="Submit" />
     </form>
   `
 };

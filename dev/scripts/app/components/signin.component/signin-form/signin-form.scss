@@ -1,0 +1,29 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+
+  &__group {
+    margin: 5px auto;
+
+    &.has-error {
+      & input {
+        border-color: #ff0000;
+      }
+    }
+
+    & input {
+      @extend .form-control;
+    }
+  }
+
+  & [type="submit"] {
+    @extend .btn;
+    @extend .btn-primary;
+
+    margin-top: 10px;
+  }
+}
+
+.formError {
+  color: #ff0000;
+}

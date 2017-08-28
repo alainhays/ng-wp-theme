@@ -1,2 +1,5 @@
 import App from './app';
-angular.bootstrap('#application', [App]);
+
+if ( angular.element('#application').length ) {
+  angular.bootstrap('#application', [App]);
+}

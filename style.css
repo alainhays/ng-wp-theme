@@ -229,8 +229,9 @@ th {
     page-break-after: avoid; }
   .navbar {
     display: none; }
-  .btn > .caret,
-  .dropup > .btn > .caret {
+  .btn > .caret, .loginForm [type="submit"] > .caret,
+  .dropup > .btn > .caret, .loginForm
+  .dropup > [type="submit"] > .caret {
     border-top-color: #000 !important; }
   .label {
     border: 1px solid #000; }
@@ -2308,7 +2309,7 @@ output {
   line-height: 1.42857;
   color: #555555; }
 
-.form-control {
+.form-control, .loginForm__group input {
   display: block;
   width: 100%;
   height: 34px;
@@ -2325,27 +2326,31 @@ output {
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
-  .form-control:focus {
+  .form-control:focus, .loginForm__group input:focus {
     border-color: #66afe9;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); }
-  .form-control::-moz-placeholder {
+  .form-control::-moz-placeholder, .loginForm__group input::-moz-placeholder {
     color: #999;
     opacity: 1; }
-  .form-control:-ms-input-placeholder {
+  .form-control:-ms-input-placeholder, .loginForm__group input:-ms-input-placeholder {
     color: #999; }
-  .form-control::-webkit-input-placeholder {
+  .form-control::-webkit-input-placeholder, .loginForm__group input::-webkit-input-placeholder {
     color: #999; }
-  .form-control::-ms-expand {
+  .form-control::-ms-expand, .loginForm__group input::-ms-expand {
     border: 0;
     background-color: transparent; }
-  .form-control[disabled], .form-control[readonly],
-  fieldset[disabled] .form-control {
+  .form-control[disabled], .loginForm__group input[disabled], .form-control[readonly], .loginForm__group input[readonly],
+  fieldset[disabled] .form-control,
+  fieldset[disabled] .loginForm__group input, .loginForm__group
+  fieldset[disabled] input {
     background-color: #eeeeee;
     opacity: 1; }
-  .form-control[disabled],
-  fieldset[disabled] .form-control {
+  .form-control[disabled], .loginForm__group input[disabled],
+  fieldset[disabled] .form-control,
+  fieldset[disabled] .loginForm__group input, .loginForm__group
+  fieldset[disabled] input {
     cursor: not-allowed; }
 
 textarea.form-control {
@@ -2355,54 +2360,77 @@ input[type="search"] {
   -webkit-appearance: none; }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input[type="date"].form-control,
+  input[type="date"].form-control, .loginForm__group input[type="date"],
   input[type="time"].form-control,
+  .loginForm__group input[type="time"],
   input[type="datetime-local"].form-control,
-  input[type="month"].form-control {
+  .loginForm__group input[type="datetime-local"],
+  input[type="month"].form-control,
+  .loginForm__group input[type="month"] {
     line-height: 34px; }
-  input[type="date"].input-sm, .input-group-sm > input[type="date"].form-control,
+  input[type="date"].input-sm, .input-group-sm > input[type="date"].form-control, .loginForm__group .input-group-sm > input[type="date"],
   .input-group-sm > input[type="date"].input-group-addon,
-  .input-group-sm > .input-group-btn > input[type="date"].btn,
+  .input-group-sm > .input-group-btn > input[type="date"].btn, .loginForm
+  .input-group-sm > .input-group-btn > input[type="date"][type="submit"],
   .input-group-sm input[type="date"],
   input[type="time"].input-sm,
   .input-group-sm > input[type="time"].form-control,
+  .loginForm__group .input-group-sm > input[type="time"],
   .input-group-sm > input[type="time"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="time"].btn,
+  .loginForm
+  .input-group-sm > .input-group-btn > input[type="time"][type="submit"],
   .input-group-sm
   input[type="time"],
   input[type="datetime-local"].input-sm,
   .input-group-sm > input[type="datetime-local"].form-control,
+  .loginForm__group .input-group-sm > input[type="datetime-local"],
   .input-group-sm > input[type="datetime-local"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="datetime-local"].btn,
+  .loginForm
+  .input-group-sm > .input-group-btn > input[type="datetime-local"][type="submit"],
   .input-group-sm
   input[type="datetime-local"],
   input[type="month"].input-sm,
   .input-group-sm > input[type="month"].form-control,
+  .loginForm__group .input-group-sm > input[type="month"],
   .input-group-sm > input[type="month"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="month"].btn,
+  .loginForm
+  .input-group-sm > .input-group-btn > input[type="month"][type="submit"],
   .input-group-sm
   input[type="month"] {
     line-height: 30px; }
-  input[type="date"].input-lg, .input-group-lg > input[type="date"].form-control,
+  input[type="date"].input-lg, .input-group-lg > input[type="date"].form-control, .loginForm__group .input-group-lg > input[type="date"],
   .input-group-lg > input[type="date"].input-group-addon,
-  .input-group-lg > .input-group-btn > input[type="date"].btn,
+  .input-group-lg > .input-group-btn > input[type="date"].btn, .loginForm
+  .input-group-lg > .input-group-btn > input[type="date"][type="submit"],
   .input-group-lg input[type="date"],
   input[type="time"].input-lg,
   .input-group-lg > input[type="time"].form-control,
+  .loginForm__group .input-group-lg > input[type="time"],
   .input-group-lg > input[type="time"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="time"].btn,
+  .loginForm
+  .input-group-lg > .input-group-btn > input[type="time"][type="submit"],
   .input-group-lg
   input[type="time"],
   input[type="datetime-local"].input-lg,
   .input-group-lg > input[type="datetime-local"].form-control,
+  .loginForm__group .input-group-lg > input[type="datetime-local"],
   .input-group-lg > input[type="datetime-local"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="datetime-local"].btn,
+  .loginForm
+  .input-group-lg > .input-group-btn > input[type="datetime-local"][type="submit"],
   .input-group-lg
   input[type="datetime-local"],
   input[type="month"].input-lg,
   .input-group-lg > input[type="month"].form-control,
+  .loginForm__group .input-group-lg > input[type="month"],
   .input-group-lg > input[type="month"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="month"].btn,
+  .loginForm
+  .input-group-lg > .input-group-btn > input[type="month"][type="submit"],
   .input-group-lg
   input[type="month"] {
     line-height: 46px; } }
@@ -2478,17 +2506,20 @@ fieldset[disabled]
   padding-bottom: 7px;
   margin-bottom: 0;
   min-height: 34px; }
-  .form-control-static.input-lg, .input-group-lg > .form-control-static.form-control,
+  .form-control-static.input-lg, .input-group-lg > .form-control-static.form-control, .loginForm__group .input-group-lg > input.form-control-static,
   .input-group-lg > .form-control-static.input-group-addon,
-  .input-group-lg > .input-group-btn > .form-control-static.btn, .form-control-static.input-sm, .input-group-sm > .form-control-static.form-control,
+  .input-group-lg > .input-group-btn > .form-control-static.btn, .loginForm
+  .input-group-lg > .input-group-btn > .form-control-static[type="submit"], .form-control-static.input-sm, .input-group-sm > .form-control-static.form-control, .loginForm__group .input-group-sm > input.form-control-static,
   .input-group-sm > .form-control-static.input-group-addon,
-  .input-group-sm > .input-group-btn > .form-control-static.btn {
+  .input-group-sm > .input-group-btn > .form-control-static.btn, .loginForm
+  .input-group-sm > .input-group-btn > .form-control-static[type="submit"] {
     padding-left: 0;
     padding-right: 0; }
 
-.input-sm, .input-group-sm > .form-control,
+.input-sm, .input-group-sm > .form-control, .loginForm__group .input-group-sm > input,
 .input-group-sm > .input-group-addon,
-.input-group-sm > .input-group-btn > .btn {
+.input-group-sm > .input-group-btn > .btn, .loginForm
+.input-group-sm > .input-group-btn > [type="submit"] {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
@@ -2497,20 +2528,24 @@ fieldset[disabled]
 
 select.input-sm, .input-group-sm > select.form-control,
 .input-group-sm > select.input-group-addon,
-.input-group-sm > .input-group-btn > select.btn {
+.input-group-sm > .input-group-btn > select.btn, .loginForm
+.input-group-sm > .input-group-btn > select[type="submit"] {
   height: 30px;
   line-height: 30px; }
 
 textarea.input-sm, .input-group-sm > textarea.form-control,
 .input-group-sm > textarea.input-group-addon,
-.input-group-sm > .input-group-btn > textarea.btn,
+.input-group-sm > .input-group-btn > textarea.btn, .loginForm
+.input-group-sm > .input-group-btn > textarea[type="submit"],
 select[multiple].input-sm,
 .input-group-sm > select[multiple].form-control,
 .input-group-sm > select[multiple].input-group-addon,
-.input-group-sm > .input-group-btn > select[multiple].btn {
+.input-group-sm > .input-group-btn > select[multiple].btn,
+.loginForm
+.input-group-sm > .input-group-btn > select[multiple][type="submit"] {
   height: auto; }
 
-.form-group-sm .form-control {
+.form-group-sm .form-control, .form-group-sm .loginForm__group input, .loginForm__group .form-group-sm input {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
@@ -2532,9 +2567,10 @@ select[multiple].input-sm,
   font-size: 12px;
   line-height: 1.5; }
 
-.input-lg, .input-group-lg > .form-control,
+.input-lg, .input-group-lg > .form-control, .loginForm__group .input-group-lg > input,
 .input-group-lg > .input-group-addon,
-.input-group-lg > .input-group-btn > .btn {
+.input-group-lg > .input-group-btn > .btn, .loginForm
+.input-group-lg > .input-group-btn > [type="submit"] {
   height: 46px;
   padding: 10px 16px;
   font-size: 18px;
@@ -2543,20 +2579,24 @@ select[multiple].input-sm,
 
 select.input-lg, .input-group-lg > select.form-control,
 .input-group-lg > select.input-group-addon,
-.input-group-lg > .input-group-btn > select.btn {
+.input-group-lg > .input-group-btn > select.btn, .loginForm
+.input-group-lg > .input-group-btn > select[type="submit"] {
   height: 46px;
   line-height: 46px; }
 
 textarea.input-lg, .input-group-lg > textarea.form-control,
 .input-group-lg > textarea.input-group-addon,
-.input-group-lg > .input-group-btn > textarea.btn,
+.input-group-lg > .input-group-btn > textarea.btn, .loginForm
+.input-group-lg > .input-group-btn > textarea[type="submit"],
 select[multiple].input-lg,
 .input-group-lg > select[multiple].form-control,
 .input-group-lg > select[multiple].input-group-addon,
-.input-group-lg > .input-group-btn > select[multiple].btn {
+.input-group-lg > .input-group-btn > select[multiple].btn,
+.loginForm
+.input-group-lg > .input-group-btn > select[multiple][type="submit"] {
   height: auto; }
 
-.form-group-lg .form-control {
+.form-group-lg .form-control, .form-group-lg .loginForm__group input, .loginForm__group .form-group-lg input {
   height: 46px;
   padding: 10px 16px;
   font-size: 18px;
@@ -2580,7 +2620,7 @@ select[multiple].input-lg,
 
 .has-feedback {
   position: relative; }
-  .has-feedback .form-control {
+  .has-feedback .form-control, .has-feedback .loginForm__group input, .loginForm__group .has-feedback input {
     padding-right: 42.5px; }
 
 .form-control-feedback {
@@ -2595,20 +2635,26 @@ select[multiple].input-lg,
   text-align: center;
   pointer-events: none; }
 
-.input-lg + .form-control-feedback, .input-group-lg > .form-control + .form-control-feedback,
+.input-lg + .form-control-feedback, .input-group-lg > .form-control + .form-control-feedback, .loginForm__group .input-group-lg > input + .form-control-feedback,
 .input-group-lg > .input-group-addon + .form-control-feedback,
-.input-group-lg > .input-group-btn > .btn + .form-control-feedback,
+.input-group-lg > .input-group-btn > .btn + .form-control-feedback, .loginForm
+.input-group-lg > .input-group-btn > [type="submit"] + .form-control-feedback,
 .input-group-lg + .form-control-feedback,
-.form-group-lg .form-control + .form-control-feedback {
+.form-group-lg .form-control + .form-control-feedback,
+.form-group-lg .loginForm__group input + .form-control-feedback, .loginForm__group
+.form-group-lg input + .form-control-feedback {
   width: 46px;
   height: 46px;
   line-height: 46px; }
 
-.input-sm + .form-control-feedback, .input-group-sm > .form-control + .form-control-feedback,
+.input-sm + .form-control-feedback, .input-group-sm > .form-control + .form-control-feedback, .loginForm__group .input-group-sm > input + .form-control-feedback,
 .input-group-sm > .input-group-addon + .form-control-feedback,
-.input-group-sm > .input-group-btn > .btn + .form-control-feedback,
+.input-group-sm > .input-group-btn > .btn + .form-control-feedback, .loginForm
+.input-group-sm > .input-group-btn > [type="submit"] + .form-control-feedback,
 .input-group-sm + .form-control-feedback,
-.form-group-sm .form-control + .form-control-feedback {
+.form-group-sm .form-control + .form-control-feedback,
+.form-group-sm .loginForm__group input + .form-control-feedback, .loginForm__group
+.form-group-sm input + .form-control-feedback {
   width: 30px;
   height: 30px;
   line-height: 30px; }
@@ -2625,11 +2671,11 @@ select[multiple].input-lg,
 .has-success.checkbox-inline label {
   color: #3c763d; }
 
-.has-success .form-control {
+.has-success .form-control, .has-success .loginForm__group input, .loginForm__group .has-success input {
   border-color: #3c763d;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
-  .has-success .form-control:focus {
+  .has-success .form-control:focus, .has-success .loginForm__group input:focus, .loginForm__group .has-success input:focus {
     border-color: #2b542c;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168; }
@@ -2654,11 +2700,11 @@ select[multiple].input-lg,
 .has-warning.checkbox-inline label {
   color: #8a6d3b; }
 
-.has-warning .form-control {
+.has-warning .form-control, .has-warning .loginForm__group input, .loginForm__group .has-warning input {
   border-color: #8a6d3b;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
-  .has-warning .form-control:focus {
+  .has-warning .form-control:focus, .has-warning .loginForm__group input:focus, .loginForm__group .has-warning input:focus {
     border-color: #66512c;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b; }
@@ -2683,11 +2729,11 @@ select[multiple].input-lg,
 .has-error.checkbox-inline label {
   color: #a94442; }
 
-.has-error .form-control {
+.has-error .form-control, .has-error .loginForm__group input, .loginForm__group .has-error input {
   border-color: #a94442;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
-  .has-error .form-control:focus {
+  .has-error .form-control:focus, .has-error .loginForm__group input:focus, .loginForm__group .has-error input:focus {
     border-color: #843534;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483; }
@@ -2717,7 +2763,7 @@ select[multiple].input-lg,
     display: inline-block;
     margin-bottom: 0;
     vertical-align: middle; }
-  .form-inline .form-control {
+  .form-inline .form-control, .form-inline .loginForm__group input, .loginForm__group .form-inline input {
     display: inline-block;
     width: auto;
     vertical-align: middle; }
@@ -2728,9 +2774,11 @@ select[multiple].input-lg,
     vertical-align: middle; }
     .form-inline .input-group .input-group-addon,
     .form-inline .input-group .input-group-btn,
-    .form-inline .input-group .form-control {
+    .form-inline .input-group .form-control,
+    .form-inline .input-group .loginForm__group input, .loginForm__group
+    .form-inline .input-group input {
       width: auto; }
-  .form-inline .input-group > .form-control {
+  .form-inline .input-group > .form-control, .form-inline .loginForm__group .input-group > input, .loginForm__group .form-inline .input-group > input {
     width: 100%; }
   .form-inline .control-label {
     margin-bottom: 0;
@@ -2791,7 +2839,7 @@ select[multiple].input-lg,
     padding-top: 6px;
     font-size: 12px; } }
 
-.btn {
+.btn, .loginForm [type="submit"] {
   display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
@@ -2810,27 +2858,31 @@ select[multiple].input-lg,
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+  .btn:focus, .loginForm [type="submit"]:focus, .btn.focus, .loginForm .focus[type="submit"], .btn:active:focus, .loginForm [type="submit"]:active:focus, .btn:active.focus, .loginForm [type="submit"]:active.focus, .btn.active:focus, .loginForm .active[type="submit"]:focus, .btn.active.focus, .loginForm .active.focus[type="submit"] {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
-  .btn:hover, .btn:focus, .btn.focus {
+  .btn:hover, .loginForm [type="submit"]:hover, .btn:focus, .loginForm [type="submit"]:focus, .btn.focus, .loginForm .focus[type="submit"] {
     color: #333;
     text-decoration: none; }
-  .btn:active, .btn.active {
+  .btn:active, .loginForm [type="submit"]:active, .btn.active, .loginForm .active[type="submit"] {
     outline: 0;
     background-image: none;
     -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }
-  .btn.disabled, .btn[disabled],
-  fieldset[disabled] .btn {
+  .btn.disabled, .loginForm .disabled[type="submit"], .btn[disabled], .loginForm [disabled][type="submit"],
+  fieldset[disabled] .btn,
+  fieldset[disabled] .loginForm [type="submit"], .loginForm
+  fieldset[disabled] [type="submit"] {
     cursor: not-allowed;
     opacity: 0.65;
     filter: alpha(opacity=65);
     -webkit-box-shadow: none;
     box-shadow: none; }
 
-a.btn.disabled,
-fieldset[disabled] a.btn {
+a.btn.disabled, .loginForm a.disabled[type="submit"],
+fieldset[disabled] a.btn,
+fieldset[disabled] .loginForm a[type="submit"], .loginForm
+fieldset[disabled] a[type="submit"] {
   pointer-events: none; }
 
 .btn-default {
@@ -2870,40 +2922,51 @@ fieldset[disabled] a.btn {
     color: #fff;
     background-color: #333; }
 
-.btn-primary {
+.btn-primary, .loginForm [type="submit"] {
   color: #fff;
   background-color: #337ab7;
   border-color: #2e6da4; }
-  .btn-primary:focus, .btn-primary.focus {
+  .btn-primary:focus, .loginForm [type="submit"]:focus, .btn-primary.focus, .loginForm .focus[type="submit"] {
     color: #fff;
     background-color: #286090;
     border-color: #122b40; }
-  .btn-primary:hover {
+  .btn-primary:hover, .loginForm [type="submit"]:hover {
     color: #fff;
     background-color: #286090;
     border-color: #204d74; }
-  .btn-primary:active, .btn-primary.active,
-  .open > .btn-primary.dropdown-toggle {
+  .btn-primary:active, .loginForm [type="submit"]:active, .btn-primary.active, .loginForm .active[type="submit"],
+  .open > .btn-primary.dropdown-toggle, .loginForm
+  .open > .dropdown-toggle[type="submit"] {
     color: #fff;
     background-color: #286090;
     border-color: #204d74; }
-    .btn-primary:active:hover, .btn-primary:active:focus, .btn-primary:active.focus, .btn-primary.active:hover, .btn-primary.active:focus, .btn-primary.active.focus,
-    .open > .btn-primary.dropdown-toggle:hover,
-    .open > .btn-primary.dropdown-toggle:focus,
-    .open > .btn-primary.dropdown-toggle.focus {
+    .btn-primary:active:hover, .loginForm [type="submit"]:active:hover, .btn-primary:active:focus, .loginForm [type="submit"]:active:focus, .btn-primary:active.focus, .loginForm [type="submit"]:active.focus, .btn-primary.active:hover, .loginForm .active[type="submit"]:hover, .btn-primary.active:focus, .loginForm .active[type="submit"]:focus, .btn-primary.active.focus, .loginForm .active.focus[type="submit"],
+    .open > .btn-primary.dropdown-toggle:hover, .loginForm
+    .open > .dropdown-toggle[type="submit"]:hover,
+    .open > .btn-primary.dropdown-toggle:focus, .loginForm
+    .open > .dropdown-toggle[type="submit"]:focus,
+    .open > .btn-primary.dropdown-toggle.focus, .loginForm
+    .open > .dropdown-toggle.focus[type="submit"] {
       color: #fff;
       background-color: #204d74;
       border-color: #122b40; }
-  .btn-primary:active, .btn-primary.active,
-  .open > .btn-primary.dropdown-toggle {
+  .btn-primary:active, .loginForm [type="submit"]:active, .btn-primary.active, .loginForm .active[type="submit"],
+  .open > .btn-primary.dropdown-toggle, .loginForm
+  .open > .dropdown-toggle[type="submit"] {
     background-image: none; }
-  .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled.focus, .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled].focus,
+  .btn-primary.disabled:hover, .loginForm .disabled[type="submit"]:hover, .btn-primary.disabled:focus, .loginForm .disabled[type="submit"]:focus, .btn-primary.disabled.focus, .loginForm .disabled.focus[type="submit"], .btn-primary[disabled]:hover, .loginForm [disabled][type="submit"]:hover, .btn-primary[disabled]:focus, .loginForm [disabled][type="submit"]:focus, .btn-primary[disabled].focus, .loginForm [disabled].focus[type="submit"],
   fieldset[disabled] .btn-primary:hover,
+  fieldset[disabled] .loginForm [type="submit"]:hover, .loginForm
+  fieldset[disabled] [type="submit"]:hover,
   fieldset[disabled] .btn-primary:focus,
-  fieldset[disabled] .btn-primary.focus {
+  fieldset[disabled] .loginForm [type="submit"]:focus, .loginForm
+  fieldset[disabled] [type="submit"]:focus,
+  fieldset[disabled] .btn-primary.focus,
+  fieldset[disabled] .loginForm .focus[type="submit"], .loginForm
+  fieldset[disabled] .focus[type="submit"] {
     background-color: #337ab7;
     border-color: #2e6da4; }
-  .btn-primary .badge {
+  .btn-primary .badge, .loginForm [type="submit"] .badge {
     color: #337ab7;
     background-color: #fff; }
 
@@ -3076,19 +3139,19 @@ fieldset[disabled] a.btn {
     color: #777777;
     text-decoration: none; }
 
-.btn-lg, .btn-group-lg > .btn {
+.btn-lg, .btn-group-lg > .btn, .loginForm .btn-group-lg > [type="submit"] {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.33333;
   border-radius: 6px; }
 
-.btn-sm, .btn-group-sm > .btn {
+.btn-sm, .btn-group-sm > .btn, .loginForm .btn-group-sm > [type="submit"] {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px; }
 
-.btn-xs, .btn-group-xs > .btn {
+.btn-xs, .btn-group-xs > .btn, .loginForm .btn-group-xs > [type="submit"] {
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
@@ -3272,20 +3335,29 @@ tbody.collapse.in {
   position: relative;
   display: inline-block;
   vertical-align: middle; }
-  .btn-group > .btn,
-  .btn-group-vertical > .btn {
+  .btn-group > .btn, .loginForm .btn-group > [type="submit"],
+  .btn-group-vertical > .btn, .loginForm
+  .btn-group-vertical > [type="submit"] {
     position: relative;
     float: left; }
-    .btn-group > .btn:hover, .btn-group > .btn:focus, .btn-group > .btn:active, .btn-group > .btn.active,
-    .btn-group-vertical > .btn:hover,
-    .btn-group-vertical > .btn:focus,
-    .btn-group-vertical > .btn:active,
-    .btn-group-vertical > .btn.active {
+    .btn-group > .btn:hover, .loginForm .btn-group > [type="submit"]:hover, .btn-group > .btn:focus, .loginForm .btn-group > [type="submit"]:focus, .btn-group > .btn:active, .loginForm .btn-group > [type="submit"]:active, .btn-group > .btn.active, .loginForm .btn-group > .active[type="submit"],
+    .btn-group-vertical > .btn:hover, .loginForm
+    .btn-group-vertical > [type="submit"]:hover,
+    .btn-group-vertical > .btn:focus, .loginForm
+    .btn-group-vertical > [type="submit"]:focus,
+    .btn-group-vertical > .btn:active, .loginForm
+    .btn-group-vertical > [type="submit"]:active,
+    .btn-group-vertical > .btn.active, .loginForm
+    .btn-group-vertical > .active[type="submit"] {
       z-index: 2; }
 
-.btn-group .btn + .btn,
+.btn-group .btn + .btn, .btn-group .loginForm [type="submit"] + .btn, .loginForm .btn-group [type="submit"] + .btn, .btn-group .loginForm .btn + [type="submit"], .loginForm .btn-group .btn + [type="submit"], .btn-group .loginForm [type="submit"] + [type="submit"], .loginForm .btn-group [type="submit"] + [type="submit"],
 .btn-group .btn + .btn-group,
+.btn-group .loginForm [type="submit"] + .btn-group, .loginForm
+.btn-group [type="submit"] + .btn-group,
 .btn-group .btn-group + .btn,
+.btn-group .loginForm .btn-group + [type="submit"], .loginForm
+.btn-group .btn-group + [type="submit"],
 .btn-group .btn-group + .btn-group {
   margin-left: -1px; }
 
@@ -3296,25 +3368,25 @@ tbody.collapse.in {
     display: table; }
   .btn-toolbar:after {
     clear: both; }
-  .btn-toolbar .btn,
+  .btn-toolbar .btn, .btn-toolbar .loginForm [type="submit"], .loginForm .btn-toolbar [type="submit"],
   .btn-toolbar .btn-group,
   .btn-toolbar .input-group {
     float: left; }
-  .btn-toolbar > .btn,
+  .btn-toolbar > .btn, .loginForm .btn-toolbar > [type="submit"],
   .btn-toolbar > .btn-group,
   .btn-toolbar > .input-group {
     margin-left: 5px; }
 
-.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle), .loginForm .btn-group > [type="submit"]:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0; }
 
-.btn-group > .btn:first-child {
+.btn-group > .btn:first-child, .loginForm .btn-group > [type="submit"]:first-child {
   margin-left: 0; }
-  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle), .loginForm .btn-group > [type="submit"]:first-child:not(:last-child):not(.dropdown-toggle) {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0; }
 
-.btn-group > .btn:last-child:not(:first-child),
+.btn-group > .btn:last-child:not(:first-child), .loginForm .btn-group > [type="submit"]:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
@@ -3322,15 +3394,15 @@ tbody.collapse.in {
 .btn-group > .btn-group {
   float: left; }
 
-.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn, .loginForm .btn-group > .btn-group:not(:first-child):not(:last-child) > [type="submit"] {
   border-radius: 0; }
 
-.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child,
+.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child, .loginForm .btn-group > .btn-group:first-child:not(:last-child) > [type="submit"]:last-child,
 .btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0; }
 
-.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
+.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child, .loginForm .btn-group > .btn-group:last-child:not(:first-child) > [type="submit"]:first-child {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
 
@@ -3338,11 +3410,11 @@ tbody.collapse.in {
 .btn-group.open .dropdown-toggle {
   outline: 0; }
 
-.btn-group > .btn + .dropdown-toggle {
+.btn-group > .btn + .dropdown-toggle, .loginForm .btn-group > [type="submit"] + .dropdown-toggle {
   padding-left: 8px;
   padding-right: 8px; }
 
-.btn-group > .btn-lg + .dropdown-toggle, .btn-group-lg.btn-group > .btn + .dropdown-toggle {
+.btn-group > .btn-lg + .dropdown-toggle, .btn-group-lg.btn-group > .btn + .dropdown-toggle, .loginForm .btn-group-lg.btn-group > [type="submit"] + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px; }
 
@@ -3353,19 +3425,20 @@ tbody.collapse.in {
     -webkit-box-shadow: none;
     box-shadow: none; }
 
-.btn .caret {
+.btn .caret, .loginForm [type="submit"] .caret {
   margin-left: 0; }
 
-.btn-lg .caret, .btn-group-lg > .btn .caret {
+.btn-lg .caret, .btn-group-lg > .btn .caret, .loginForm .btn-group-lg > [type="submit"] .caret {
   border-width: 5px 5px 0;
   border-bottom-width: 0; }
 
-.dropup .btn-lg .caret, .dropup .btn-group-lg > .btn .caret {
+.dropup .btn-lg .caret, .dropup .btn-group-lg > .btn .caret, .dropup .loginForm .btn-group-lg > [type="submit"] .caret, .loginForm .dropup .btn-group-lg > [type="submit"] .caret {
   border-width: 0 5px 5px; }
 
-.btn-group-vertical > .btn,
+.btn-group-vertical > .btn, .loginForm .btn-group-vertical > [type="submit"],
 .btn-group-vertical > .btn-group,
-.btn-group-vertical > .btn-group > .btn {
+.btn-group-vertical > .btn-group > .btn, .loginForm
+.btn-group-vertical > .btn-group > [type="submit"] {
   display: block;
   float: none;
   width: 100%;
@@ -3378,40 +3451,42 @@ tbody.collapse.in {
 .btn-group-vertical > .btn-group:after {
   clear: both; }
 
-.btn-group-vertical > .btn-group > .btn {
+.btn-group-vertical > .btn-group > .btn, .loginForm .btn-group-vertical > .btn-group > [type="submit"] {
   float: none; }
 
-.btn-group-vertical > .btn + .btn,
-.btn-group-vertical > .btn + .btn-group,
-.btn-group-vertical > .btn-group + .btn,
+.btn-group-vertical > .btn + .btn, .loginForm .btn-group-vertical > [type="submit"] + .btn, .loginForm .btn-group-vertical > .btn + [type="submit"], .loginForm .btn-group-vertical > [type="submit"] + [type="submit"],
+.btn-group-vertical > .btn + .btn-group, .loginForm
+.btn-group-vertical > [type="submit"] + .btn-group,
+.btn-group-vertical > .btn-group + .btn, .loginForm
+.btn-group-vertical > .btn-group + [type="submit"],
 .btn-group-vertical > .btn-group + .btn-group {
   margin-top: -1px;
   margin-left: 0; }
 
-.btn-group-vertical > .btn:not(:first-child):not(:last-child) {
+.btn-group-vertical > .btn:not(:first-child):not(:last-child), .loginForm .btn-group-vertical > [type="submit"]:not(:first-child):not(:last-child) {
   border-radius: 0; }
 
-.btn-group-vertical > .btn:first-child:not(:last-child) {
+.btn-group-vertical > .btn:first-child:not(:last-child), .loginForm .btn-group-vertical > [type="submit"]:first-child:not(:last-child) {
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-.btn-group-vertical > .btn:last-child:not(:first-child) {
+.btn-group-vertical > .btn:last-child:not(:first-child), .loginForm .btn-group-vertical > [type="submit"]:last-child:not(:first-child) {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px; }
 
-.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn, .loginForm .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > [type="submit"] {
   border-radius: 0; }
 
-.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,
+.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child, .loginForm .btn-group-vertical > .btn-group:first-child:not(:last-child) > [type="submit"]:last-child,
 .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
+.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child, .loginForm .btn-group-vertical > .btn-group:last-child:not(:first-child) > [type="submit"]:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
 
@@ -3420,20 +3495,23 @@ tbody.collapse.in {
   width: 100%;
   table-layout: fixed;
   border-collapse: separate; }
-  .btn-group-justified > .btn,
+  .btn-group-justified > .btn, .loginForm .btn-group-justified > [type="submit"],
   .btn-group-justified > .btn-group {
     float: none;
     display: table-cell;
     width: 1%; }
-  .btn-group-justified > .btn-group .btn {
+  .btn-group-justified > .btn-group .btn, .btn-group-justified > .btn-group .loginForm [type="submit"], .loginForm .btn-group-justified > .btn-group [type="submit"] {
     width: 100%; }
   .btn-group-justified > .btn-group .dropdown-menu {
     left: auto; }
 
-[data-toggle="buttons"] > .btn input[type="radio"],
-[data-toggle="buttons"] > .btn input[type="checkbox"],
-[data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
-[data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
+[data-toggle="buttons"] > .btn input[type="radio"], .loginForm [data-toggle="buttons"] > [type="submit"] input[type="radio"],
+[data-toggle="buttons"] > .btn input[type="checkbox"], .loginForm
+[data-toggle="buttons"] > [type="submit"] input[type="checkbox"],
+[data-toggle="buttons"] > .btn-group > .btn input[type="radio"], .loginForm
+[data-toggle="buttons"] > .btn-group > [type="submit"] input[type="radio"],
+[data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"], .loginForm
+[data-toggle="buttons"] > .btn-group > [type="submit"] input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none; }
@@ -3446,22 +3524,26 @@ tbody.collapse.in {
     float: none;
     padding-left: 0;
     padding-right: 0; }
-  .input-group .form-control {
+  .input-group .form-control, .input-group .loginForm__group input, .loginForm__group .input-group input {
     position: relative;
     z-index: 2;
     float: left;
     width: 100%;
     margin-bottom: 0; }
-    .input-group .form-control:focus {
+    .input-group .form-control:focus, .input-group .loginForm__group input:focus, .loginForm__group .input-group input:focus {
       z-index: 3; }
 
 .input-group-addon,
 .input-group-btn,
-.input-group .form-control {
+.input-group .form-control,
+.input-group .loginForm__group input, .loginForm__group
+.input-group input {
   display: table-cell; }
   .input-group-addon:not(:first-child):not(:last-child),
   .input-group-btn:not(:first-child):not(:last-child),
-  .input-group .form-control:not(:first-child):not(:last-child) {
+  .input-group .form-control:not(:first-child):not(:last-child),
+  .input-group .loginForm__group input:not(:first-child):not(:last-child), .loginForm__group
+  .input-group input:not(:first-child):not(:last-child) {
     border-radius: 0; }
 
 .input-group-addon,
@@ -3480,15 +3562,17 @@ tbody.collapse.in {
   background-color: #eeeeee;
   border: 1px solid #ccc;
   border-radius: 4px; }
-  .input-group-addon.input-sm,
+  .input-group-addon.input-sm, .loginForm__group .input-group-sm > input.input-group-addon,
   .input-group-sm > .input-group-addon,
-  .input-group-sm > .input-group-btn > .input-group-addon.btn {
+  .input-group-sm > .input-group-btn > .input-group-addon.btn, .loginForm
+  .input-group-sm > .input-group-btn > .input-group-addon[type="submit"] {
     padding: 5px 10px;
     font-size: 12px;
     border-radius: 3px; }
-  .input-group-addon.input-lg,
+  .input-group-addon.input-lg, .loginForm__group .input-group-lg > input.input-group-addon,
   .input-group-lg > .input-group-addon,
-  .input-group-lg > .input-group-btn > .input-group-addon.btn {
+  .input-group-lg > .input-group-btn > .input-group-addon.btn, .loginForm
+  .input-group-lg > .input-group-btn > .input-group-addon[type="submit"] {
     padding: 10px 16px;
     font-size: 18px;
     border-radius: 6px; }
@@ -3496,26 +3580,34 @@ tbody.collapse.in {
   .input-group-addon input[type="checkbox"] {
     margin-top: 0; }
 
-.input-group .form-control:first-child,
+.input-group .form-control:first-child, .input-group .loginForm__group input:first-child, .loginForm__group .input-group input:first-child,
 .input-group-addon:first-child,
-.input-group-btn:first-child > .btn,
-.input-group-btn:first-child > .btn-group > .btn,
+.input-group-btn:first-child > .btn, .loginForm
+.input-group-btn:first-child > [type="submit"],
+.input-group-btn:first-child > .btn-group > .btn, .loginForm
+.input-group-btn:first-child > .btn-group > [type="submit"],
 .input-group-btn:first-child > .dropdown-toggle,
-.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle), .loginForm
+.input-group-btn:last-child > [type="submit"]:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:last-child > .btn-group:not(:last-child) > .btn, .loginForm
+.input-group-btn:last-child > .btn-group:not(:last-child) > [type="submit"] {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0; }
 
 .input-group-addon:first-child {
   border-right: 0; }
 
-.input-group .form-control:last-child,
+.input-group .form-control:last-child, .input-group .loginForm__group input:last-child, .loginForm__group .input-group input:last-child,
 .input-group-addon:last-child,
-.input-group-btn:last-child > .btn,
-.input-group-btn:last-child > .btn-group > .btn,
+.input-group-btn:last-child > .btn, .loginForm
+.input-group-btn:last-child > [type="submit"],
+.input-group-btn:last-child > .btn-group > .btn, .loginForm
+.input-group-btn:last-child > .btn-group > [type="submit"],
 .input-group-btn:last-child > .dropdown-toggle,
-.input-group-btn:first-child > .btn:not(:first-child),
-.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+.input-group-btn:first-child > .btn:not(:first-child), .loginForm
+.input-group-btn:first-child > [type="submit"]:not(:first-child),
+.input-group-btn:first-child > .btn-group:not(:first-child) > .btn, .loginForm
+.input-group-btn:first-child > .btn-group:not(:first-child) > [type="submit"] {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
 
@@ -3526,16 +3618,16 @@ tbody.collapse.in {
   position: relative;
   font-size: 0;
   white-space: nowrap; }
-  .input-group-btn > .btn {
+  .input-group-btn > .btn, .loginForm .input-group-btn > [type="submit"] {
     position: relative; }
-    .input-group-btn > .btn + .btn {
+    .input-group-btn > .btn + .btn, .loginForm .input-group-btn > [type="submit"] + .btn, .loginForm .input-group-btn > .btn + [type="submit"], .loginForm .input-group-btn > [type="submit"] + [type="submit"] {
       margin-left: -1px; }
-    .input-group-btn > .btn:hover, .input-group-btn > .btn:focus, .input-group-btn > .btn:active {
+    .input-group-btn > .btn:hover, .loginForm .input-group-btn > [type="submit"]:hover, .input-group-btn > .btn:focus, .loginForm .input-group-btn > [type="submit"]:focus, .input-group-btn > .btn:active, .loginForm .input-group-btn > [type="submit"]:active {
       z-index: 2; }
-  .input-group-btn:first-child > .btn,
+  .input-group-btn:first-child > .btn, .loginForm .input-group-btn:first-child > [type="submit"],
   .input-group-btn:first-child > .btn-group {
     margin-right: -1px; }
-  .input-group-btn:last-child > .btn,
+  .input-group-btn:last-child > .btn, .loginForm .input-group-btn:last-child > [type="submit"],
   .input-group-btn:last-child > .btn-group {
     z-index: 2;
     margin-left: -1px; }
@@ -3850,7 +3942,7 @@ tbody.collapse.in {
       display: inline-block;
       margin-bottom: 0;
       vertical-align: middle; }
-    .navbar-form .form-control {
+    .navbar-form .form-control, .navbar-form .loginForm__group input, .loginForm__group .navbar-form input {
       display: inline-block;
       width: auto;
       vertical-align: middle; }
@@ -3861,9 +3953,11 @@ tbody.collapse.in {
       vertical-align: middle; }
       .navbar-form .input-group .input-group-addon,
       .navbar-form .input-group .input-group-btn,
-      .navbar-form .input-group .form-control {
+      .navbar-form .input-group .form-control,
+      .navbar-form .input-group .loginForm__group input, .loginForm__group
+      .navbar-form .input-group input {
         width: auto; }
-    .navbar-form .input-group > .form-control {
+    .navbar-form .input-group > .form-control, .navbar-form .loginForm__group .input-group > input, .loginForm__group .navbar-form .input-group > input {
       width: 100%; }
     .navbar-form .control-label {
       margin-bottom: 0;
@@ -3914,10 +4008,10 @@ tbody.collapse.in {
 .navbar-btn {
   margin-top: 8px;
   margin-bottom: 8px; }
-  .navbar-btn.btn-sm, .btn-group-sm > .navbar-btn.btn {
+  .navbar-btn.btn-sm, .btn-group-sm > .navbar-btn.btn, .loginForm .btn-group-sm > .navbar-btn[type="submit"] {
     margin-top: 10px;
     margin-bottom: 10px; }
-  .navbar-btn.btn-xs, .btn-group-xs > .navbar-btn.btn {
+  .navbar-btn.btn-xs, .btn-group-xs > .navbar-btn.btn, .loginForm .btn-group-xs > .navbar-btn[type="submit"] {
     margin-top: 14px;
     margin-bottom: 14px; }
 
@@ -4210,7 +4304,7 @@ tbody.collapse.in {
   border-radius: .25em; }
   .label:empty {
     display: none; }
-  .btn .label {
+  .btn .label, .loginForm [type="submit"] .label {
     position: relative;
     top: -1px; }
 
@@ -4264,11 +4358,12 @@ a.label:hover, a.label:focus {
   border-radius: 10px; }
   .badge:empty {
     display: none; }
-  .btn .badge {
+  .btn .badge, .loginForm [type="submit"] .badge {
     position: relative;
     top: -1px; }
-  .btn-xs .badge, .btn-group-xs > .btn .badge,
-  .btn-group-xs > .btn .badge {
+  .btn-xs .badge, .btn-group-xs > .btn .badge, .loginForm .btn-group-xs > [type="submit"] .badge,
+  .btn-group-xs > .btn .badge, .loginForm
+  .btn-group-xs > [type="submit"] .badge {
     top: 0;
     padding: 1px 5px; }
   .list-group-item.active > .badge,
@@ -5158,10 +5253,10 @@ button.close {
     display: table; }
   .modal-footer:after {
     clear: both; }
-  .modal-footer .btn + .btn {
+  .modal-footer .btn + .btn, .modal-footer .loginForm [type="submit"] + .btn, .loginForm .modal-footer [type="submit"] + .btn, .modal-footer .loginForm .btn + [type="submit"], .loginForm .modal-footer .btn + [type="submit"], .modal-footer .loginForm [type="submit"] + [type="submit"], .loginForm .modal-footer [type="submit"] + [type="submit"] {
     margin-left: 5px;
     margin-bottom: 0; }
-  .modal-footer .btn-group .btn + .btn {
+  .modal-footer .btn-group .btn + .btn, .modal-footer .btn-group .loginForm [type="submit"] + .btn, .loginForm .modal-footer .btn-group [type="submit"] + .btn, .modal-footer .btn-group .loginForm .btn + [type="submit"], .loginForm .modal-footer .btn-group .btn + [type="submit"], .modal-footer .btn-group .loginForm [type="submit"] + [type="submit"], .loginForm .modal-footer .btn-group [type="submit"] + [type="submit"] {
     margin-left: -1px; }
   .modal-footer .btn-block + .btn-block {
     margin-left: 0; }
@@ -5583,7 +5678,7 @@ button.close {
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }
-  .carousel-caption .btn {
+  .carousel-caption .btn, .carousel-caption .loginForm [type="submit"], .loginForm .carousel-caption [type="submit"] {
     text-shadow: none; }
 
 @media screen and (min-width: 768px) {
@@ -5835,6 +5930,19 @@ button.close {
   justify-content: space-around;
   flex: 1 0 100%;
   margin: 20px 0 40px 0; }
+
+.loginForm {
+  display: flex;
+  flex-direction: column; }
+  .loginForm__group {
+    margin: 5px auto; }
+    .loginForm__group.has-error input {
+      border-color: #ff0000; }
+  .loginForm [type="submit"] {
+    margin-top: 10px; }
+
+.formError {
+  color: #ff0000; }
 
 #application {
   margin-right: auto;

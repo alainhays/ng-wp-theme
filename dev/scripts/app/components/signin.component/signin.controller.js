@@ -1,7 +1,8 @@
 class SignInController {
   constructor() {
     this.message = 'SignInController';
-  }
+  };
+
   // $onInit() {
   //   this.newTodo = {
   //     title: '',

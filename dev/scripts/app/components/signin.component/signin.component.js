@@ -6,10 +6,8 @@ const SignInComponent = {
   },
   controller,
   template: `
-    <div class="signin">
         {{ $ctrl.message }}
       <signinform></signinform>
-    </div>
   `
 };
 

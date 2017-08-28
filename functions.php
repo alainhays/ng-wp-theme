@@ -16,6 +16,7 @@ class wpngtheme_setup {
     add_action( 'after_theme_setup', array( __CLASS__, 'type_of_image' ) );
     add_action( 'wp_footer', array( __CLASS__, 'scripts_to_footer' ) );
     add_action( 'wp_head', array( __CLASS__, 'scripts_to_head' ) );
+
     // remove_action( 'woocommerce_before_main_content', array(
     //   __CLASS__,
     //   'woocommerce_output_content_wrapper'
@@ -186,7 +187,7 @@ class wpngtheme_setup {
       wp_enqueue_script( 'core', esc_url( get_stylesheet_directory_uri() ) . "/app.js", array('jquery'), true, true );
     endif;
     wp_enqueue_style( 'style-core', esc_url( get_stylesheet_directory_uri() . "/style.css" ) );
-
+    wp_localize_script( 'core', 'globals', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
   }
 
   static function theme_support() {
@@ -293,8 +294,7 @@ include_once( __DIR__ . "/lib/wp_bootstrap_navwalker.php" );
 wpngtheme::startup();
 
 /* For front-end form registration and login */
-class User {
-  static function logoutFn() {
+  function logoutFn() {
     wp_logout();
 
     if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
@@ -304,12 +304,10 @@ class User {
     }
   }
 
-  static function logout() {
-    add_action("wp_ajax_logoutFn", "logoutFn");
-    add_action("wp_ajax_nopriv_logoutFn", "logoutFn");
-  }
+  add_action("wp_ajax_logoutFn", "logoutFn");
+  add_action("wp_ajax_nopriv_logoutFn", "logoutFn");
 
-  static function loginFn() {
+  function loginFn() {
     $creds = array();
 
     $username = null;
@@ -327,28 +325,47 @@ class User {
     $creds['user_password'] = $password;
     $creds['remember'] = true;
     $user = wp_signon( $creds, false );
-    if (is_wp_error($user)) {
-      echo "FALSE";
-    } else {
-      echo "TRUE";
+    $error = null;
+
+    if ( is_wp_error( $user ) ) {
+
+      $user = checkWpErrors($user);
+
+      wp_send_json( array( 'success' => false, 'error' => $user) );
     }
 
-    if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-      die();
-    } else {
-      header("Location: " . $_SERVER['HTTP_REFERER']);
-    }
+    wp_send_json( array( 'success' => true, 'user_info' => $user->data) );
+  }
+  add_action("wp_ajax_loginFn", "loginFn");
+  add_action("wp_ajax_nopriv_loginFn", "loginFn");
+
+
+function checkWpErrors($error) {
+
+  if($error->get_error_code() === 'invalid_username') {
+
+    $error->remove('invalid_username');
+    $error->add('invalid_username', 'Invalid username');
+
+  } elseif ($error->get_error_code() === 'invalid_password') {
+
+    $error->remove('invalid_password');
+    $error->add('invalid_password', 'Invalid password');
+
+  } elseif ($error->get_error_code() === 'incorrect_password') {
+
+    $error->remove('incorrect_password');
+    $error->add('incorrect_password', 'Incorrect password');
+
+  } elseif ($error->get_error_code() === 'invalid_email') {
+
+    $error->remove('invalid_email');
+    $error->add('invalid_email', 'Invalid username');
+
   }
 
-  static function login() {
-    add_action("wp_ajax_login", "login");
-    add_action("wp_ajax_nopriv_login", "login");
-  }
-
-
+  return $error->get_error_message();
 }
-
-
 
   /* TODO: PHP REGISTRATION WITH ACF FIELD */ // function pre_save_player( $post_id ) { // //prepare basic user info // $field_group
   // = acf_get_fields_by_id('14'); // $username = $_POST['acf']['field_5979cc8a77f89']; // $email = $_POST['acf']['field_597af637643c9'];
